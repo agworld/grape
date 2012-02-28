@@ -1,7 +1,7 @@
 require 'hashie'
 
 module Grape
-  # An Entity is a lightweight structure that allows you to easily
+  # An Entity is a lightweight structure that allows you to easily 
   # represent data from your application in a consistent and abstracted
   # way in your API.
   #
@@ -19,7 +19,7 @@ module Grape
   #     end
   #   end
   #
-  # Entities are not independent structures, rather, they create
+  # Entities are not independent structures, rather, they create 
   # **representations** of other Ruby objects using a number of methods
   # that are convenient for use in an API. Once you've defined an Entity,
   # you can use it in your API like this:
@@ -54,7 +54,7 @@ module Grape
     #   it will yield the object being represented and the options passed to the
     #   representation call. Return true to prevent exposure, false to allow it.
     # @option options :using This option allows you to map an attribute to another Grape
-    #   Entity. Pass it a Grape::Entity class and the attribute in question will
+    #   Entity. Pass it a Grape::Entity class and the attribute in question will 
     #   automatically be transformed into a representation that will receive the same
     #   options as the parent entity when called. Note that arrays are fine here and
     #   will automatically be detected and handled appropriately.
@@ -196,7 +196,7 @@ module Grape
     #   root name even if one is defined for the entity.
     def self.represent(objects, options = {})
       inner = if objects.respond_to?(:to_ary)
-        objects.to_ary().map{|o| self.new(o, {:collection => true}.merge(options))}
+        objects.to_ary().map{|o| self.new(o, {:collection => true}.merge(options)).as_json}
       else
         self.new(objects, options)
       end
