@@ -96,7 +96,7 @@ module Grape
     #   representation.
     def self.represent(objects, options = {})
       if objects.is_a?(Array)
-        objects.map{|o| self.new(o, {:collection => true}.merge(options))}
+        objects.map{|o| self.new(o, {:collection => true}.merge(options)).as_json }
       else
         self.new(objects, options)
       end
